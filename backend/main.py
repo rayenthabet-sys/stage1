@@ -21,9 +21,15 @@ from pipeline import (
     train_model, classify_parcel, detect_parcels_in_zone,
     CLASS_NAMES, centroid, area_ha_shoelace
 )
+from config import settings
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")
 log = logging.getLogger(__name__)
+
+if settings.OPENED_CLIENT_ID:
+    log.info("Environment variables loaded successfully.")
+else:
+    log.warning("OPENED_CLIENT_ID not found in .env or environment.")
 
 # ─── App setup ──────────────────────────────────────────────────────────────
 
